@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jasmine Spec Runner</title>
+
+    <link rel="shortcut icon" type="image/png" href="lib/jasmine/jasmine_favicon.png">
+
+    <!-- include jasmine library files -->
+    <link rel="stylesheet" type="text/css" href="lib/jasmine/jasmine.css">
+    <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
+
+    <!-- include dojo library files here... -->
+    <script type="text/javascript" src="../js/lib/dojo.min.js"></script>
+
+    <!-- include helper files here... -->
+    <script type="text/javascript" src="utils/SpecHelper.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="spec/GameSpec.js"></script>
+    <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+    <script type="text/javascript" src="spec/FrameSpec.js"></script>
+
+    <!-- include source files here... -->
+    <script type="text/javascript" src="../js/extendArray.js"></script>
+    <script type="text/javascript" src="../js/Game.js"></script>
+
+    <script type="text/javascript">
+      (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+
+        var trivialReporter = new jasmine.TrivialReporter();
+
+        jasmineEnv.addReporter(trivialReporter);
+
+        jasmineEnv.specFilter = function(spec) {
+          return trivialReporter.specFilter(spec);
+        };
+
+        var currentWindowOnload = window.onload;
+
+        window.onload = function() {
+          if (currentWindowOnload) {
+            currentWindowOnload();
+          }
+          execJasmine();
+        };
+
+        function execJasmine() {
+          jasmineEnv.execute();
+        }
+
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
