@@ -31,7 +31,7 @@ audio[controls], canvas, video { display: inline-block; *display: inline; *zoom:
 
 html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
-body { margin: 0; font-size: 13px; line-height: 1.231; }
+body { margin: 0; font-size: 15px; line-height: 1.231; }
 
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
@@ -198,10 +198,318 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* =============================================================================
    Primary styles
-   Author: 
    ========================================================================== */
 
+html {
+    background-color: #66AA66;
+    text-align: center;
+}
 
+/* currently set on htc hero screen size */
+body {
+    margin: 0px auto;
+    min-width: 300px;
+}
+
+header {
+    background: #CCCCCC;
+    font-weight: bold;
+    font-size: 120%;
+    line-height: 40px;
+}
+
+#container {
+    padding-bottom: 60px;
+}
+
+/* default showing and hiding of containers */
+#container #start { display: none; }
+#container #game { display: none; }
+#container #input { display: none; }
+#container #game_actions { display: none; }
+#container #output { display: none; }
+
+#container.new #start { display: block; }
+#container.playing #game { display: block; }
+#container.playing #input { display: block; }
+#container.playing #game_actions { display: block; }
+#container.winner #game { display: block; }
+#container.winner #output { display: block; }
+
+#start fieldset {
+    background-color: rgba(0,0,0,0.8);
+    margin: 20px 0px;
+    padding: 8px 0px;
+}
+#start fieldset.error {
+    padding: 6px 0px;
+}
+#start fieldset label {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: right;
+    width: 25%;
+    display: inline-block;
+}
+#start fieldset input{
+    width: 50%;
+    display: inline-block;
+}
+
+/* game field */
+
+#player_names {
+    color: #FFFFFF;
+    line-height: 40px;
+    background-color: rgba(0,0,0,0.8);
+    margin: 20px 0px 10px 0px;
+    text-align: center;
+    padding: 0px 20px;
+}
+
+#player_names h1 {
+    font-size: 80%;
+    width: 45%;
+    float: left;
+    margin: 0px;
+    height: 40px;
+    overflow: hidden;
+}
+
+#player_names span {
+    width: 10%;
+    float: left;
+}
+
+#player_scores {
+    background-color: rgba(0,0,0,0.8);
+    margin: 0px 0px 20px 0px;
+    color: #FFFFFF;
+    line-height: 40px;
+    padding: 0 20px;
+}
+
+#player_scores > span {
+    display: block;
+    float: left;
+}
+
+#player_scores .result {
+    width: 45%;
+}
+
+#player_scores .result output {
+    width: 50%;
+    display: block;
+    float: left;
+}
+
+#player_scores .result output {
+    width: 50%;
+    display: block;
+    float: left;
+}
+
+#player_scores .result .current {
+    background-color: #FFFF00;
+    color: #000000;
+    font-size: 135%;
+    font-weight: 600;
+}
+
+#player_scores .result .frames {
+    text-align: right;
+}
+
+#player_scores .result.p1 output {
+    float: right;
+}
+
+#player_scores .result.p1 .frames {
+    text-align: left;
+}
+
+#player_scores .bestOf {
+    width: 10%;
+}
+
+#output {
+    padding: 0px 20px;
+}
+
+#output h1 {
+    margin: 0px;
+}
+
+#winner_frames {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#winner_frames li {
+    margin: 10px 0px;
+    background-color: rgba(0,0,0,0.8);
+    line-height: 25px;
+    color: #FFFFFF;
+}
+
+#winner_frames li .score {
+    width: 40%;
+}
+
+#winner_frames li .winner .score {
+    background-color: #FFFF00;
+    color: #000000;
+}
+
+#winner_frames li .break {
+    padding: 0px 5px;
+}
+
+#winner_frames span {
+    float: left;
+    width: 10%;
+}
+
+#winner_frames div {
+    float: left;
+}
+
+#winner_frames li > div {
+    width: 35%;
+}
+
+#winner_frames .p1 {
+    margin-right: 10%;
+}
+
+#winner_frames .p0 div {
+    float: right;
+}
+
+/* input section */
+
+#container #input {
+    margin: 0px auto;
+    max-width: 500px;
+}
+
+#score_selector, #game_actions, #score_input { display: none; }
+#input.actions #score_selector, #input.actions #game_actions { display: block; }
+#input.input #score_input { display: block; }
+
+#score_selector{
+    margin: 0px 20px;
+}
+#score_selector input.p0 {
+    float: left;
+}
+#score_selector input.p1 {
+    float: right;
+}
+
+#score_input {
+    margin: 0px 18px;
+}
+
+#score_input h1 {
+    margin: 0px;
+}
+
+#score_input .output {
+    padding: 2px;
+}
+
+#score_input .output input {
+    width: 100%;
+    padding: 0px;
+    border: 0px none;
+    height: 30px;
+    text-align: center;
+}
+
+#score_input input[type="button"] {
+    margin: 2px;
+    background-color: #222222;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+#score_input .numbers {
+    width: 65%;
+    float: left;
+}
+
+#score_input .numbers input {
+    float: left;
+}
+
+#score_input .numberPad {
+    width: 30%;
+}
+
+#score_input input.remove {
+    width: 62%;
+    background-color: #CC0000;
+}
+
+#score_input .actions {
+    width: 35%;
+}
+
+#score_input .actions input {
+    width: 100%;
+    float: right;
+}
+
+#score_input #player_break {
+    background-color: #009900;
+}
+
+#score_input #player_foul {
+    background-color: #CC0000;
+    color: #FFFFFF;
+}
+
+#game_actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 5px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* custom generic styles */
+.error {
+    border: 2px solid #FF0000;
+}
+
+input {
+    margin: 0px;
+    padding: 2px;
+}
+
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+
+input[type="text"], input[type="number"] {
+    border: 2px solid #FFFFFF;
+}
+
+input[type="submit"], input[type="button"] {
+    height: 38px;
+    border: 1px solid #222222;
+    padding: 0px 20px;
+}
+
+input:focus {
+    border: 2px solid #FFFF00;
+}
 
 
 
@@ -231,7 +539,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
 
-/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
@@ -259,7 +567,7 @@ table { border-collapse: collapse; border-spacing: 0; }
    Print styles.
    Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
- 
+
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
   a, a:visited { color: #444 !important; text-decoration: underline; }

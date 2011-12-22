@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title></title>
+    <title>Snooker ScoreBoard</title>
     <meta name="description" content="A snooker scoreboard web-app">
     <meta name="author" content="Joost Elfering">
     <meta name="designer" content="Joost Elfering">
@@ -20,22 +20,111 @@
     <script src="js/lib/dojo.min.js"></script>
   </head>
   <body>
-    <div id="container">
-      <header>Snooker scoreboard</header>
+    <div id="container" class="new">
+      <header>Snooker ScoreBoard</header>
       <section id="start">
-        start
+        <form id="new_game_form" action="javascript: return false;">
+          <fieldset>
+            <label for="player_0">Player 1</label>
+            <input type="text" placeholder="name..." name="player_0" id="player_0">
+          </fieldset>
+          <fieldset>
+            <label for="player_1">Player 2</label>
+            <input type="text" placeholder="name..." name="player_1" id="player_1">
+          </fieldset>
+          <fieldset>
+            <label for="best_of">Best of</label>
+            <input type="number" placeholder="5..." name="best_of" id="best_of">
+          </fieldset>
+          <input type="submit" value="Start match">
+        </form>
       </section>
       <section id="game">
-        game board
+        <div id="player_names" class="clearfix">
+          <h1 class="p0">Player 1</h1>
+          <span>-</span>
+          <h1 class="p1">Player 2</h1>
+        </div>
+        <div id="player_scores" class="clearfix">
+          <span class="result p0">
+            <output class="current">0</output>
+            <output class="frames">0</output>
+          </span>
+          <span class="bestOf">(1)</span>
+          <span class="result p1">
+            <output class="current">0</output>
+            <output class="frames">0</output>
+          </span>
+        </div>
       </section>
-      <section id="input">
-        player
+      <section id="input" class="actions">
+        <div id="score_selector">
+          <input type="button" value="< input score" class="p0">
+          <input type="button" value="input score >" class="p1">
+        </div>
+        <form id="score_input" action="javascript: return false;">
+          <h1></h1>
+          <fieldset>
+            <input type="hidden" value="" name="player_id" id="player_id">
+            <fieldset class="output">
+              <input type="number" value="" name="score_input_store" id="score_input_store" placeholder="0">
+            </fieldset>
+            <div class="row clearfix">
+              <fieldset class="numbers">
+                <input type="button" value="1" class="numberPad">
+                <input type="button" value="2" class="numberPad">
+                <input type="button" value="3" class="numberPad">
+                <input type="button" value="4" class="numberPad">
+                <input type="button" value="5" class="numberPad">
+                <input type="button" value="6" class="numberPad">
+                <input type="button" value="7" class="numberPad">
+                <input type="button" value="8" class="numberPad">
+                <input type="button" value="9" class="numberPad">
+                <input type="button" value="0" class="numberPad">
+                <input type="button" value="X" class="remove">
+              </fieldset>
+              <fieldset class="actions">
+                <input type="button" value="Break" name="player_break" id="player_break">
+                <input type="button" value="Foul" name="player_foul" id="player_foul">
+                <input type="button" value="Done" name="input_done" id="input_done">
+              </fieldset>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+      <section id="output">
+        <h1 id="winner_name">Winner unknown</h1>
+        <ol id="winner_frames">
+          <li class="clearfix">
+            <span>1</span>
+            <div class="p0 winner">
+              <div class="score">45</div>
+              <div class="break">(12)</div>
+            </div>
+            <span>-</span>
+            <div class="p1">
+              <div class="score">14</div>
+              <div class="break">(14)</div>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section id="game_actions">
+        <input type="button" value="end frame" id="end_frame">
+        <input type="button" value="end game" id="end_game">
       </section>
     </div>
+
+    <script>
+        dojo.addOnLoad(function(){
+            window.mainController = new ssb.GameController();
+        });
+    </script>
 
     <!-- scripts -->
     <script src="js/extendArray.js"></script>
     <script src="js/Game.js"></script>
+    <script src="js/GameController.js"></script>
     <!-- end scripts-->
   </body>
 </html>
